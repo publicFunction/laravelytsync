@@ -1,0 +1,72 @@
+section {
+
+  .playlist {
+    display: inline-block;
+    margin: 0 10px 10px;
+    position: relative;
+    &.item {
+      width: 295px;
+      height: $playlist_item_height;
+      &:hover {
+        a {
+          span {
+            &.read {
+              display: block;
+              opacity: 0.65;
+            }
+          }
+        }
+      }
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+      }
+      a {
+        position: absolute;
+        bottom: 0;
+        padding: 15px 0;
+        width: 100%;
+        &:hover {
+          color : #FFF;
+        }
+        span {
+          display: inline-block;
+          width: 100%;
+          &.title {
+            font-size: 137%;
+            text-align: center;
+            font-weight: 700;
+          }
+          &.read {
+            display: none;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: $playlist_item_height;
+            color : #FFF;
+            z-index: 1;
+          }
+          &.count,
+          &.text {
+            padding: 10px 0;
+            text-align: center;
+            width: 100%;
+            margin: 0 auto;
+            font-size: 154%;
+            font-weight: 700;
+            vertical-align: baseline;
+            color: #000;
+            position: relative;
+            z-index: 2;
+            opacity: 1;
+            line-height: 35px;
+          }
+        }
+      }
+    }
+  }
+
+}

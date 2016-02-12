@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: PublicFunction
+        psr4_prefix: PublicFunction
+        src_path: app

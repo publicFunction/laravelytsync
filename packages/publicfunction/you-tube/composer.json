@@ -1,0 +1,13 @@
+{
+    "name": "publicfunction/you-tube",
+    "description": "Package for creating categories, posts etc... Directly from your own you tube channel.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Chris Moss",
+            "email": "chris@publicfunction.co.uk"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

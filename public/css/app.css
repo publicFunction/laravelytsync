@@ -1,0 +1,77 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200italic,300,200,300italic,400italic,600,600italic,700,700italic,900,900italic);
+body {
+  font-size: 16px;
+}
+
+section .playlist {
+  display: inline-block;
+  margin: 0 10px 10px;
+  position: relative;
+}
+
+section .playlist.item {
+  width: 295px;
+  height: 166px;
+}
+
+section .playlist.item:hover a span.read {
+  display: block;
+  opacity: 0.65;
+}
+
+section .playlist.item img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+section .playlist.item a {
+  position: absolute;
+  bottom: 0;
+  padding: 15px 0;
+  width: 100%;
+}
+
+section .playlist.item a:hover {
+  color: #FFF;
+}
+
+section .playlist.item a span {
+  display: inline-block;
+  width: 100%;
+}
+
+section .playlist.item a span.title {
+  font-size: 137%;
+  text-align: center;
+  font-weight: 700;
+}
+
+section .playlist.item a span.read {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 166px;
+  color: #FFF;
+  z-index: 1;
+}
+
+section .playlist.item a span.count,
+section .playlist.item a span.text {
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  font-size: 154%;
+  font-weight: 700;
+  vertical-align: baseline;
+  color: #000;
+  position: relative;
+  z-index: 2;
+  opacity: 1;
+  line-height: 35px;
+}
