@@ -7,3 +7,20 @@
 body {
   font-size: 16px;
 }
+
+.menu {
+  .menu-item {
+
+    &.menu-item-has-children {
+      ul {
+        &.sub-menu {
+          width: 900%;
+          &> li {
+            display: inline-block;
+            padding: 10px 15px;
+          }
+        }
+      }
+    }
+  }
+}
