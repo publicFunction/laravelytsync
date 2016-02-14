@@ -9,10 +9,10 @@
                     <a href="{{URL::route('home')}}">Home</a>
                 </li>
                 <li class="menu-item">
-                    <a href="http://publicfunction.co.uk/live-streaming/">Live Streaming</a>
+                    <a href="{{URL::route('livestream.home')}}">Live Streaming</a>
                 </li>
                 <li class="menu-item menu-item-has-children">
-                    <a href="http://publicfunction.co.uk/category/you-tube/">You Tube</a>
+                    <a href="{{URL::route('youtube.playlists')}}">You Tube</a>
                     <ul class="sub-menu">
                     @foreach(\PublicFunction\Helpers\Helper::generatePlaylistMenu() as $item)
                             <li class="menu-item">
