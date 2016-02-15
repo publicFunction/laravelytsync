@@ -14,7 +14,7 @@ class VideoRepository {
     }
 
     public function getCountOfVideosInPlaylist($playlist_id) {
-        return Videos::where('playlist_id', $playlist_id)->count();
+        return Videos::where('playlist_id', $playlist_id)->get()->count();
     }
 
     public function getVideosByPlaylistId($playlist_id) {
