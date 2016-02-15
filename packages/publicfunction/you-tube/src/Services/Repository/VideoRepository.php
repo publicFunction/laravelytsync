@@ -17,34 +17,28 @@ class VideoRepository {
         return Videos::where('playlist_id', $playlist_id)->count();
     }
 
-    public function getPlaylistsById($id) {
-        return Playlists::where('id', $id)->get()->first();
+    public function getVideosByPlaylistId($playlist_id) {
+        return Videos::where('playlist_id', $playlist_id)->get();
     }
 
-    public function getPlaylistsByPlaylistId($playlist_id) {
-        return Playlists::where('playlist_id', $playlist_id)->get()->first();
+    public function getVideoByVideoId($id) {
+        return Videos::where('video_hash_id', $id)->first();
     }
 
-    public function create($data) {
-        $playlist = new Playlists();
+    public function create($data, $playlist_pk) {
+        $video = new Videos();
 
-        $input['playlist_id'] = $data->id;
+        $input['playlist_id'] = $playlist_pk;
+        $input['video_id'] = $data->snippet->resourceId->videoId;
+        $input['video_hash_id'] = $data->id;
         $input['title'] = $data->snippet->title;
         $input['description'] = $data->snippet->description;
         $input['published_at'] = $data->snippet->publishedAt;
+        $input['position'] = $data->snippet->position;
 
-        $playlist->fill($input);
-        $playlist->save();
-
-        //foreach($data->snippet->thumbnails as $thumbnail) {
-        //    $new_thumb = new PlaylistThumbnails();
-        //    $thumbnail = (array)$thumbnail;
-        //    $thumbnail['playlists_id'] = $playlist->id;
-        //    var_dump($thumbnail);
-        //    //$new_thumb->create($thumbnail);
-        //    //$new_thumb->save();
-        //}
-        return $playlist->fresh();
+        $video->fill($input);
+        $video->save();
+        return $video->fresh();
     }
 
     public function update($data) {

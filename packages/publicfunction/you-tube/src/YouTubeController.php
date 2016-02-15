@@ -3,17 +3,23 @@
 namespace PublicFunction\YouTube;
 
 
-use PublicFunction\Http\Controllers\Controller;
+use Illuminate\Routing\Controller as Controller;
 use PublicFunction\YouTube\Lib\YouTube;
 use PublicFunction\YouTube\Services\Repository\PlaylistRepository;
 use PublicFunction\YouTube\Services\Repository\PlaylistThumbnailsRepository;
+use PublicFunction\YouTube\Services\Repository\VideoRepository;
+use PublicFunction\YouTube\Services\Repository\VideoThumbnailsRepository;
 
 class YouTubeController extends Controller {
 
     private $app;
     private $client;
 
-    public function __construct(PlaylistRepository $playlistRepository, PlaylistThumbnailsRepository $playlistThumbnailsRepsoitory) {
+    public function __construct(PlaylistRepository $playlistRepository,
+                                PlaylistThumbnailsRepository $playlistThumbnailsRepsoitory,
+                                VideoRepository $videoRepository,
+                                VideoThumbnailsRepository $videoThumbnailsRepository
+                                ) {
         $this->app = app();
         $config = $this->app['config'];
         $config_yt = $config['youtube'];
@@ -23,6 +29,8 @@ class YouTubeController extends Controller {
         $this->client = $yt->client();
         $this->_playlist_repository = $playlistRepository;
         $this->_playlist_thumb_repository = $playlistThumbnailsRepsoitory;
+        $this->_video_repository = $videoRepository;
+        $this->_video_thumb_repository = $videoThumbnailsRepository;
     }
 
     public function index() {
@@ -37,11 +45,8 @@ class YouTubeController extends Controller {
             $new_playlist = $this->_playlist_repository->getPlaylistsByPlaylistId($playlist->id);
             if($new_playlist !== null) {
                 if($new_playlist->thumbnails->count()) {
-                    //var_dump($new_playlist->thumbnails->detach());
-                    //$new_playlist->thumbnails->detach();
                     foreach($new_playlist->thumbnails as $key => $thumbnail) {
-                        //var_dump($thumbnail);
-                        $thumbnail->detach();
+                        $thumbnail->delete();
                     }
                 }
                 $this->createThumbnails($playlist->snippet, $new_playlist->id);
@@ -52,8 +57,47 @@ class YouTubeController extends Controller {
         }
     }
 
+    public function videos() {
+        $playlists = $this->_playlist_repository->getPlaylists();
+        $args = array();
+        $args['part'] = "snippet";
+        foreach($playlists as $playlist) {
+            $args['playlistId'] = $playlist->playlist_id;
+            $videos = $this->client->get('playlistItems', $args);
+            foreach($videos->items as $video){
+                $new_video = $this->_video_repository->getVideoByVideoId($video->id);
+                if($new_video === null) {
+                    $new_video = $this->_video_repository->create($video, $playlist->id);
+                }
+                if($new_video->thumbnails->count()) {
+                    foreach($new_video->thumbnails as $key => $thumbnail) {
+                        $thumbnail->delete();
+                    }
+                }
+                $this->createVideoThumbnails($video->snippet, $new_video->id);
+                continue;
+
+            }
+        }
+    }
+
+    private function createVideoThumbnails($video, $video_id)
+    {
+        try {
+            if ($video->thumbnails) {
+                foreach ($video->thumbnails as $size => $thumbnail) {
+                    $thumb_data = (array)$thumbnail;
+                    $thumb_data['size'] = $size;
+                    $thumb_data['videos_id'] = $video_id;
+                    $this->_video_thumb_repository->create($thumb_data);
+                }
+            }
+        } catch (\Exception $e) {
+
+        }
+    }
+
     private function createThumbnails($playlist, $playlist_id) {
-        echo "TIME TO CREATE THUMBNAILS...<br />";
         foreach($playlist->thumbnails as $size => $thumbnail) {
             $thumb_data = (array)$thumbnail;
             $thumb_data['size'] = $size;
@@ -61,5 +105,4 @@ class YouTubeController extends Controller {
             $this->_playlist_thumb_repository->create($thumb_data);
         }
     }
-
 }
