@@ -81,29 +81,20 @@ class YouTubeController extends Controller {
         }
     }
 
-    /*private function createVideoThumbnails($video, $video_id)
-    {
+    private function createThumbnails($model, $model_id, $type='playlist') {
         try {
-            if ($video->thumbnails) {
-                foreach ($video->thumbnails as $size => $thumbnail) {
+            if ($model->thumbnails) {
+                foreach($model->thumbnails as $size => $thumbnail) {
                     $thumb_data = (array)$thumbnail;
                     $thumb_data['size'] = $size;
-                    $thumb_data['videos_id'] = $video_id;
-                    $this->_video_thumb_repository->create($thumb_data);
+                    $fk = $type."s_id";
+                    $thumb_data[$fk] = $model_id;
+                    $repos = "_".$type."_thumb_repository";
+                    $this->$repos->create($thumb_data);
                 }
             }
         } catch (\Exception $e) {
 
-        }
-    }*/
-
-    private function createThumbnails($model, $model_id, $type='playlist') {
-        foreach($model->thumbnails as $size => $thumbnail) {
-            $thumb_data = (array)$thumbnail;
-            $thumb_data['size'] = $size;
-            $thumb_data['playlists_id'] = $playlist_id;
-            $repos = "_".$type."_thumb_repository";
-            $this->$repos->create($thumb_data);
         }
     }
 }
