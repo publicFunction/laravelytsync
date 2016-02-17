@@ -74,7 +74,7 @@ class YouTubeController extends Controller {
                         $thumbnail->delete();
                     }
                 }
-                $this->createThumbnails($video->snippet, $new_video->id, 'videos');
+                $this->createThumbnails($video->snippet, $new_video->id, 'video');
                 continue;
 
             }
