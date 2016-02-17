@@ -49,7 +49,7 @@ class YouTubeController extends Controller {
                         $thumbnail->delete();
                     }
                 }
-                $this->createThumbnails($playlist->snippet, $new_playlist->id);
+                $this->createThumbnails($playlist->snippet, $new_playlist->id, 'playlist');
                 continue;
             }
             $new_playlist = $this->_playlist_repository->create($playlist);
