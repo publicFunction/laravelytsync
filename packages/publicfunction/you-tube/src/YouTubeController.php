@@ -102,7 +102,8 @@ class YouTubeController extends Controller {
             $thumb_data = (array)$thumbnail;
             $thumb_data['size'] = $size;
             $thumb_data['playlists_id'] = $playlist_id;
-            $this->_{$type}_thumb_repository->create($thumb_data);
+            $repos = "_".$type."_thumb_repository";
+            $this->$repos->create($thumb_data);
         }
     }
 }
