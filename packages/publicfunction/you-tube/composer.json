@@ -1,6 +1,6 @@
 {
     "name": "publicfunction/you-tube",
-    "description": "Package for creating categories, posts etc... Directly from your own you tube channel.",
+    "description": "Package for Syncing Playlists, Playlist Thumnails, Videos and Video Thumbnaisl, directly from your own you tube channel.",
     "license": "MIT",
     "authors": [
         {
