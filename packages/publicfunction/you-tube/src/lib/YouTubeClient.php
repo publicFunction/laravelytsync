@@ -28,8 +28,25 @@ class YouTubeClient {
     }
 
     private function makeRequest($url, $params=array()) {
-        $response = file_get_contents($url);
+        $response= null;
+        try {
+            if(function_exists('file_get_contents')) {
+                $response = file_get_contents($url);
+            }
+        } catch (\Exception $err) {
+            $response = $this->useCurl($url, $params);
+        }
         return $response;
     }
-
+    
+    private function useCurl($url, $params) {
+        $curl = curl_init();
+		curl_setopt($curl, CURLOPT_URL, $url);
+	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+	    curl_setopt($curl, CURLOPT_REFERER, '');		
+	    $feed = curl_exec($curl);
+	    curl_close($curl);
+	    return $feed;
+    }
+    
 }
