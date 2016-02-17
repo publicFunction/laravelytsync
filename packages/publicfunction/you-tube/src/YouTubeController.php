@@ -53,7 +53,7 @@ class YouTubeController extends Controller {
                 continue;
             }
             $new_playlist = $this->_playlist_repository->create($playlist);
-            $this->createThumbnails($playlist->snippet, $new_playlist->id);
+            $this->createThumbnails($playlist->snippet, $new_playlist->id, 'playlist');
         }
     }
 
@@ -74,14 +74,14 @@ class YouTubeController extends Controller {
                         $thumbnail->delete();
                     }
                 }
-                $this->createVideoThumbnails($video->snippet, $new_video->id);
+                $this->createThumbnails($video->snippet, $new_video->id, 'videos');
                 continue;
 
             }
         }
     }
 
-    private function createVideoThumbnails($video, $video_id)
+    /*private function createVideoThumbnails($video, $video_id)
     {
         try {
             if ($video->thumbnails) {
@@ -95,14 +95,14 @@ class YouTubeController extends Controller {
         } catch (\Exception $e) {
 
         }
-    }
+    }*/
 
-    private function createThumbnails($playlist, $playlist_id) {
-        foreach($playlist->thumbnails as $size => $thumbnail) {
+    private function createThumbnails($model, $model_id, $type='playlist') {
+        foreach($model->thumbnails as $size => $thumbnail) {
             $thumb_data = (array)$thumbnail;
             $thumb_data['size'] = $size;
             $thumb_data['playlists_id'] = $playlist_id;
-            $this->_playlist_thumb_repository->create($thumb_data);
+            $this->_{$type}_thumb_repository->create($thumb_data);
         }
     }
 }
