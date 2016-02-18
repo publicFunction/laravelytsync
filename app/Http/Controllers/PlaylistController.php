@@ -25,7 +25,7 @@ class PlaylistController extends Controller {
 
     public function showVideo($playlist_id, $video_id) {
         $video = $this->_video_repository->getVideoByVideoId($video_id);
-        
+
         return view('youtube.video')
             ->with('video', $video);
     }
