@@ -15,6 +15,7 @@ Route::group([], function() {
 
     Route::get('/', ['as' => 'home' , 'uses' => 'HomeController@index']);
     Route::get('/playlist/{playlist_id}', ['as' => 'playlist.videos' , 'uses' => 'PlaylistController@index']);
+    Route::get('/playlist/{playlist_id}/video/{video_id}', ['as' => 'playlist.video.show' , 'uses' => 'PlaylistController@showVideo']);
     Route::get('/live-streaming', ['as' => 'livestream.home' , 'uses' => 'LiveStreamController@index']);
     Route::get('/you-tube/playlist', ['as' => 'youtube.playlists', 'uses' => 'YouTubeController@index']);
     Route::get('/you-tube/playlist/{playlist_id}', ['as' => 'youtube.playlists.playlist', 'uses' => 'YouTubeController@playlist']);
