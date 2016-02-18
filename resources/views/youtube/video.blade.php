@@ -4,5 +4,7 @@
 
 @section('page_content')
     <h1 class="insidepost">You Tube Video - {{$video->title}}</h1>
-    {{$video}}
+    <div class="container-fluid video">
+        <iframe width="100%" src="{{\PublicFunction\Helpers\Helper::getYouTubeUrl($video->video_id)}}"></iframe>
+    </div>
 @endsection

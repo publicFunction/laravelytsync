@@ -8,6 +8,9 @@ use PublicFunction\YouTube\Services\Repository\VideoRepository;
 
 class Helper {
 
+    const YOU_FULL_URL = "//www.youtube.com/?";
+    private static $query_params;
+
     /**
      * @param PlaylistRepository $playlistRepository
      * @param VideoRepository $videoRepository
@@ -17,6 +20,9 @@ class Helper {
         $this->video_repository = $videoRepository;
     }
 
+    public static function getQueryParams() {
+        return self::$query_params = array('watch' => "watch=");
+    }
     /**
      * @return array
      */
@@ -37,6 +43,11 @@ class Helper {
         $repos = new VideoRepository();
         $count = $repos->getCountOfVideosInPlaylist($playlist_id);
         return $count;
+    }
+
+    public static function getYouTubeUrl($yt_id){
+
+        return self::YOU_FULL_URL.self::getQueryParams()['watch'].$yt_id;
     }
 
 }
