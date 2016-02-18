@@ -8,7 +8,7 @@ use PublicFunction\YouTube\Services\Repository\VideoRepository;
 
 class Helper {
 
-    const YOU_FULL_URL = "//www.youtube.com/?";
+    const YOU_FULL_URL = "//www.youtube.com/";
     private static $query_params;
 
     /**
@@ -21,7 +21,7 @@ class Helper {
     }
 
     public static function getQueryParams() {
-        return self::$query_params = array('watch' => "watch=");
+        return self::$query_params = array('watch' => "embed/");
     }
     /**
      * @return array
