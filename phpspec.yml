@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: PublicFunction
-        psr4_prefix: PublicFunction
+        namespace: PublicFunctionWeb
+        psr4_prefix: PublicFunctionWeb
         src_path: app
