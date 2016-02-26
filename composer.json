@@ -21,6 +21,7 @@
         "psr-4": {
             "PublicFunction\\": "app/",
             "PublicFunction\\YouTube\\" : "packages/publicfunction/you-tube/src/"
+            "PublicFunction\\YouTube\\Lib\\" : "packages/publicfunction/you-tube/src/lib"
         }
     },
     "autoload-dev": {
