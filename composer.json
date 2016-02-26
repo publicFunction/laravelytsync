@@ -19,7 +19,7 @@
             "database"
         ],
         "psr-4": {
-            "PublicFunction\\": "app/",
+            "PublicFunctionWeb\\": "app/",
             "PublicFunction\\YouTube\\" : "packages/publicfunction/you-tube/src/"
         }
     },
