@@ -1,6 +1,6 @@
 <?php
 
-namespace PublicFunction\Events;
+namespace PublicFunctionWeb\Events;
 
 abstract class Event
 {
