@@ -1,6 +1,0 @@
-[submodule "packages/publicfunction/twitter"]
-	path = packages/publicfunction/twitter
-	url = git@github.com:publicFunction/twitter.git
-[submodule "packages/publicfunction/you-tube"]
-	path = packages/publicfunction/you-tube
-	url = git@github.com:publicFunction/you-tube.git
