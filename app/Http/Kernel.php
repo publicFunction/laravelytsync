@@ -1,6 +1,6 @@
 <?php
 
-namespace PublicFunction\Http;
+namespace PublicFunctionWeb\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -13,11 +13,11 @@ class Kernel extends HttpKernel
      */
     protected $middleware = [
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
-        \PublicFunction\Http\Middleware\EncryptCookies::class,
+        \PublicFunctionWeb\Http\Middleware\EncryptCookies::class,
         \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
         \Illuminate\Session\Middleware\StartSession::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-        \PublicFunction\Http\Middleware\VerifyCsrfToken::class,
+        \PublicFunctionWeb\Http\Middleware\VerifyCsrfToken::class,
     ];
 
     /**
@@ -26,8 +26,8 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \PublicFunction\Http\Middleware\Authenticate::class,
+        'auth' => \PublicFunctionWeb\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'guest' => \PublicFunction\Http\Middleware\RedirectIfAuthenticated::class,
+        'guest' => \PublicFunctionWeb\Http\Middleware\RedirectIfAuthenticated::class,
     ];
 }

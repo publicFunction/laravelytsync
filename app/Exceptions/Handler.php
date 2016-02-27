@@ -1,6 +1,6 @@
 <?php
 
-namespace PublicFunction\Exceptions;
+namespace PublicFunctionWeb\Exceptions;
 
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;

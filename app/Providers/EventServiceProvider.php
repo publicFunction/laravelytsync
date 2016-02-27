@@ -1,6 +1,6 @@
 <?php
 
-namespace PublicFunction\Providers;
+namespace PublicFunctionWeb\Providers;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'PublicFunction\Events\SomeEvent' => [
-            'PublicFunction\Listeners\EventListener',
+        'PublicFunctionWeb\Events\SomeEvent' => [
+            'PublicFunctionWeb\Listeners\EventListener',
         ],
     ];
 

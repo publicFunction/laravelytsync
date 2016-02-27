@@ -1,6 +1,6 @@
 <?php
 
-namespace PublicFunction\Providers;
+namespace PublicFunctionWeb\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

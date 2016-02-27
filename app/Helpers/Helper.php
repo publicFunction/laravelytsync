@@ -1,6 +1,6 @@
 <?php
 
-namespace PublicFunction\Helpers;
+namespace PublicFunctionWeb\Helpers;
 
 
 use PublicFunction\YouTube\Services\Repository\PlaylistRepository;

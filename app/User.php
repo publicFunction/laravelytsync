@@ -1,6 +1,6 @@
 <?php
 
-namespace PublicFunction;
+namespace PublicFunctionWeb;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;

@@ -1,6 +1,6 @@
 <?php
 
-namespace PublicFunction\Http\Controllers;
+namespace PublicFunctionWeb\Http\Controllers;
 
 class LiveStreamController extends Controller {
 

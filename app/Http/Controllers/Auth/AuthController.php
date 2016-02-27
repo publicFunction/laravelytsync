@@ -1,10 +1,10 @@
 <?php
 
-namespace PublicFunction\Http\Controllers\Auth;
+namespace PublicFunctionWeb\Http\Controllers\Auth;
 
-use PublicFunction\User;
+use PublicFunctionWeb\User;
 use Validator;
-use PublicFunction\Http\Controllers\Controller;
+use PublicFunctionWeb\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace PublicFunction\Providers;
+namespace PublicFunctionWeb\Providers;
 
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'PublicFunction\Model' => 'PublicFunction\Policies\ModelPolicy',
+        'PublicFunctionWeb\Model' => 'PublicFunctionWeb\Policies\ModelPolicy',
     ];
 
     /**
