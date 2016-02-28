@@ -2,7 +2,7 @@
     <div class="pages">
         <div class="menu-mainmenu-container">
             <ul id="menu-mainmenu" class="menu">
-                @foreach(PublicFunction\Helpers\Helper::generateMainMenu() as $menu)
+                @foreach(PublicFunctionWeb\Helpers\Helper::generateMainMenu() as $menu)
 
                 @endforeach
                 <li class="menu-item current-menu-item">
@@ -14,7 +14,7 @@
                 <li class="menu-item menu-item-has-children">
                     <a href="{{URL::route('youtube.playlists')}}">You Tube</a>
                     <ul class="sub-menu">
-                    @foreach(\PublicFunction\Helpers\Helper::generatePlaylistMenu() as $item)
+                    @foreach(\PublicFunctionWeb\Helpers\Helper::generatePlaylistMenu() as $item)
                             <li class="menu-item">
                                 <a href="{{URL::route('playlist.videos', $item->playlist_id)}}">{{$item->title}}</a>
                             </li>
